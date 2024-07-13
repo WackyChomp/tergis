@@ -12,14 +12,34 @@
     Management system to keep your network close
     <br />
     <br />
-    <a href="https://github.com/WackyChomp/resonance"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/WackyChomp/tergis"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/WackyChomp/resonance">View Demo</a>
+    <a href="https://github.com/WackyChomp/tergis">View Demo</a>
     ·
-    <a href="https://github.com/WackyChomp/resonance/issues">Report Bug</a>
+    <a href="https://github.com/WackyChomp/tergis/issues">Report Bug</a>
     ·
-    <a href="https://github.com/WackyChomp/resonance/issues">Request Feature</a>
+    <a href="https://github.com/WackyChomp/tergis/issues">Request Feature</a>
   </p>
 </div>
 
 <br />
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments 🌟🤗🌟
+
+List of incredible resources that give you inspiration or point you into a direction:
+
+* [Choose an Open Source License](https://choosealicense.com)
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Emojipedia 😱](https://emojipedia.org/smileys)
+* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+* [Malven's Grid Cheatsheet](https://grid.malven.co/)
+* [Font Awesome](https://fontawesome.com)
+<br><br>
+* [Next.js](https://nextjs.org/) - React Framework
+* [Shadcn/ui](https://ui.shadcn.com/docs) - Customizable UI components
+* [Tailwind CSS](https://tailwindcss.com/docs/installation) - CSS framework
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

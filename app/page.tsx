@@ -7,17 +7,22 @@ export default function Home() {
   return (
     <div className="flex h-screen max-h-screen">
 
+      {/* Add Verification */}
+
       {/* Takes up half the screen */}
-      <section className="bg-orange-700 remove-scrollbar container my-auto">
+      <section className="bg-gray-800 remove-scrollbar container my-auto p-4">
         <div className="sub-container max-w-[500px]">
-          {/* <Image 
-            src='./public/sample-logo.svg'
-            height={200}
-            width={200}
-            alt='logo-goes-right-here'
-            className="mb-12 h-10 w-fit"
-          /> */}
-          <h1 className="text-2xl capitalize mb-12">Tergis logo</h1>
+
+          <div className="flex">
+            <Image 
+              src='https://img.icons8.com/ios/300/ghost--v1.png'
+              height={200}
+              width={200}
+              alt='logo-goes-right-here'
+              className="bg-white px-3 mb-12 h-10 w-fit"
+            />
+            <h1 className="bg-white text-black pr-3 text-3xl capitalize mb-12">Tergis</h1>
+          </div>
 
           <PatientForm/>
 
@@ -32,25 +37,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Placeholder for Image / takes up half the screen */}
-      <div className="bg-red-500 max-w-[50%] flex">
-        <div className="flex-col-2">
-          <div className="p-24 bg-blue-600">first</div>
-          <div className="p-24 bg-green-600">second</div>
-          <div className="p-24 bg-yellow-600">third</div>
-        </div>
-        <div className="flex-col-2">
-          <div className="p-24 bg-blue-600">first</div>
-          <div className="p-24 bg-green-600">second</div>
-          <div className="p-24 bg-yellow-600">third</div>
-        </div>
-        <div className="flex-col-2">
-          <div className="p-24 bg-blue-600">first</div>
-          <div className="p-24 bg-green-600">second</div>
-          <div className="p-24 bg-yellow-600">third</div>
-        </div>
-      </div>
-
+      {/* Takes up half the screen */}
+      <Image
+        src='https://images.pexels.com/photos/1540977/pexels-photo-1540977.jpeg'
+        height={1200}
+        width={1200}
+        alt='half-page-image'
+        className="max-w-[50%] scale-x-[-1] side-img"
+      />
     </div>
   );
 }
