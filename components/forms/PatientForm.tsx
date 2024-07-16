@@ -7,6 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Form } from "../ui/form"
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 
+export enum FormFieldType {     // ensure type validation
+  INPUT = 'input',
+  TEXTAREA = 'textArea',
+  PHONE_INPUT = 'phoneInput',
+  CHECKBOX = 'checkbox',
+  DATE_PICKER = 'datePicker',
+  SELECT = 'select',
+  SKELETON = 'skeleton',
+}
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -43,7 +52,13 @@ const PatientForm = () => {
         </section>
 
         <CustomFormFieldTemplate
+          fieldType={FormFieldType.INPUT}
           control={form.control}
+          name='name'
+          label='Full Name'
+          placeholder='Enter a NAME'
+          iconSource="/public/next.svg"
+          iconAlt='user'
         />
 
         <Button type="submit">Submit</Button>
