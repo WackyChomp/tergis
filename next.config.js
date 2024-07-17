@@ -20,14 +20,6 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'svgsilh.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'svgrepo.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'img.icons8.com',
       },
       {
