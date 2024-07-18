@@ -25,6 +25,8 @@ const formSchema = z.object({
 
 
 const PatientForm = () => {
+  const iconExampleTwo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN3b3JkcyI+PHBvbHlsaW5lIHBvaW50cz0iMTQuNSAxNy41IDMgNiAzIDMgNiAzIDE3LjUgMTQuNSIvPjxsaW5lIHgxPSIxMyIgeDI9IjE5IiB5MT0iMTkiIHkyPSIxMyIvPjxsaW5lIHgxPSIxNiIgeDI9IjIwIiB5MT0iMTYiIHkyPSIyMCIvPjxsaW5lIHgxPSIxOSIgeDI9IjIxIiB5MT0iMjEiIHkyPSIxOSIvPjxwb2x5bGluZSBwb2ludHM9IjE0LjUgNi41IDE4IDMgMjEgMyAyMSA2IDE3LjUgOS41Ii8+PGxpbmUgeDE9IjUiIHgyPSI5IiB5MT0iMTQiIHkyPSIxOCIvPjxsaW5lIHgxPSI3IiB4Mj0iNCIgeTE9IjE3IiB5Mj0iMjAiLz48bGluZSB4MT0iMyIgeDI9IjUiIHkxPSIxOSIgeTI9IjIxIi8+PC9zdmc+`
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,7 +43,7 @@ const PatientForm = () => {
   }
   
   return (
-    <div>
+    <div className="bg-gray-900 py-1 px-4 rounded-3xl">
       <h1 className="text-3xl pb-4">Patient Form</h1>
 
       <Form {...form}>
@@ -57,7 +59,17 @@ const PatientForm = () => {
           name='name'
           label='Full Name'
           placeholder='Enter a NAME'
-          iconSource="/public/next.svg"
+          iconSource={iconExampleTwo}
+          iconAlt='user'
+        />
+
+        <CustomFormFieldTemplate
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name='email'
+          label='Email Address'
+          placeholder='example28@gmail.com'
+          iconSource={iconExampleTwo}
           iconAlt='user'
         />
 

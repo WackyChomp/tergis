@@ -8,6 +8,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Control } from "react-hook-form"
 import { FormFieldType } from "./forms/PatientForm"
@@ -33,12 +34,34 @@ interface CustomFormProps {
 }
 
 const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) => {
-  return(
-    <Input 
-      type='text'
-      placeholder="example placeholder"
-    />
-  )
+  // destructure outside of parameter so it can pass entire prop object all at once
+  const { fieldType, iconSource, iconAlt, placeholder } = props
+
+  switch (fieldType){
+    case FormFieldType.INPUT:
+      return(
+        <div className="flex rounded-md border border-yellow-500 bg-blue-500">
+          {iconSource && (
+            <Image src={iconSource} 
+              alt = {iconAlt || 'icon-alt'}
+              height = {25}
+              width = {25}
+              className="ml-2"
+            />
+          )}
+
+          <FormControl>
+            <Input 
+              placeholder={placeholder}
+              {...field}
+              className="shad-input border-0"
+            />
+          </FormControl>
+        </div>
+      )
+    default:
+    break;
+  }
 }
 
 const CustomFormFieldTemplate = (props: CustomFormProps) => {
