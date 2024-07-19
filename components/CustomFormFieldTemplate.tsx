@@ -42,7 +42,7 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
   switch (fieldType){
     case FormFieldType.INPUT:
       return(
-        <div className="flex rounded-md border border-yellow-500 bg-gray-800">
+        <div className="flex rounded-2xl border border-yellow-500 bg-gray-800">
           {iconSource && (
             <Image src={iconSource} 
               alt = {iconAlt || 'icon-alt'}
@@ -64,7 +64,7 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
 
     case FormFieldType.PHONE_INPUT:
       return(
-        <div className="flex rounded-md border w-fit border-yellow-500 bg-green-900">
+        <div className="flex rounded-2xl border w-fit border-yellow-500 bg-green-900">
           <FormControl>
             <PhoneInput 
               international
