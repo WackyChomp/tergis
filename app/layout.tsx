@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('min-h-screen font-roboto antialiased', roboto.variable)}>
+      <body className={cn('bg-orange-800 min-h-screen font-roboto antialiased', roboto.variable)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"     //makes background original dark and text white by default

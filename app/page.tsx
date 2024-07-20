@@ -15,7 +15,7 @@ export default function Home() {
       {/* Add Verification */}
 
       {/* Takes up half the screen */}
-      <section className="bg-gray-800 remove-scrollbar container my-auto p-4">
+      <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[500px]">
 
           <div className="flex">
