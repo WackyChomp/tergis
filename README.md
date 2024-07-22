@@ -38,6 +38,17 @@
 </details>
 
 
+## About The Project
+With technology at our finger tips, it has become so convenient to meet others, cultivate relationships, and form a group. 
+
+Create a private pipeline or group of trustworthy people without the interference of regulations from a platform which you have no control over and must oblige to. Skip the need to ask for permission, become the host, and take control of your own choices!
+
+Ever wondered how you can keep tabs on people in your network or inner circle. Look no further with, <b>WIP NAME</b>.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
 <!-- BUILT WITH -->
 ## Built With
 Here are some frameworks/libraries used in this project:
@@ -45,6 +56,7 @@ Here are some frameworks/libraries used in this project:
 * [![Tailwind][Tailwind.css]][Tailwind-url]
 * [![React][React.js]][React-url]
 * [![Next][Next.js]][Next-url]
+* [![Appwrite][Appwrite]][Appwrite-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -64,7 +76,7 @@ List of incredible resources that give you inspiration or point you into a direc
 * [Next.js](https://nextjs.org/) - React Framework
 * [Shadcn/ui](https://ui.shadcn.com/docs) - Customizable UI components
 * [Tailwind CSS](https://tailwindcss.com/docs/installation) - CSS framework
-
+* [Appwrite](https://appwrite.io/) - Open-source scalable backend
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,3 +91,6 @@ List of incredible resources that give you inspiration or point you into a direc
 [React-url]: https://reactjs.org/
 [Tailwind.css]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
 [Tailwind-url]: https://tailwindcss.com/
+
+[Appwrite]: https://img.shields.io/badge/Appwrite-%23FD366E.svg?style=for-the-badge&logo=appwrite&logoColor=white
+[Appwrite-url]: https://appwrite.io/
