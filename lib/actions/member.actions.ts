@@ -10,8 +10,8 @@ export const createUser = async (user:CreateUserParams) => {
       ID.unique(), 
       user.email, 
       user.phone, 
+      undefined,      // refers to password , parameter order matters
       user.name, 
-      undefined
     )
     
   } catch (error: any) {
