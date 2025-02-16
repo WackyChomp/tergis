@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import PatientForm from "@/components/forms/PatientForm";
+import MemberForm from "@/components/forms/MemberForm";
 
 export default function Home() {
   // Example Icons
@@ -29,7 +29,7 @@ export default function Home() {
             <h1 className="bg-white text-black pr-3 text-3xl capitalize mb-12">Tergis</h1>
           </div>
 
-          <PatientForm/>
+          <MemberForm/>
 
           <div className="text-14-regular px-2 mt-20 flex justify-between">
             <div className="flex">

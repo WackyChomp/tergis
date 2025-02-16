@@ -31,9 +31,10 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#built-with">Built With</a></li>
+    <li><a href="#folder-structure">Folder Structure</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#"></a></li>
-    <li><a href="#"></a></li>
+    <!--<li><a href="#"></a></li>-->
+    <!--<li><a href="#"></a></li>-->
   </ol>
 </details>
 
@@ -61,8 +62,46 @@ Here are some frameworks/libraries used in this project:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+## Folder Structure
+General overview of folder/files
+```
+|--- app/
+  |--- members/
+    |--- [userId]
+      |--- register/
+        |-- page.tsx
+  |-- globals.css
+  |-- layout.tsx
+  |-- page.tsx
+
+|--- components/
+  |--- forms/
+    |-- MemberForm.tsx
+  |--- ui           <-- shadcn-ui>
+  |-- CustomFormFieldTemplate.tsx
+  |-- SubmitButton.tsx
+  |-- theme-provider.tsx
+
+|--- lib/
+  |--- actions/
+    |-- member.actions.ts
+  |-- appwrite.config.ts
+  |-- utils.ts
+  |-- validation.ts
+
+|--- public/
+
+|--- types/
+  |-- appwrite.types.ts
+  |-- index.d.ts
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments 🌟🤗🌟
+## Acknowledgments 
+🌟🤗🌟
 
 List of incredible resources that give you inspiration or point you into a direction:
 
