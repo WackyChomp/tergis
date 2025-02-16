@@ -1,14 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import RegisterForm from '@/components/forms/RegisterForm'
+import { getUser } from '@/lib/actions/member.actions'
 
-const Register = () => {
+const Register = async ({ params: {userId} } : SearchParamProps) => {
   const iconExample = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdob3N0Ij48cGF0aCBkPSJNOSAxMGguMDEiLz48cGF0aCBkPSJNMTUgMTBoLjAxIi8+PHBhdGggZD0iTTEyIDJhOCA4IDAgMCAwLTggOHYxMmwzLTMgMi41IDIuNUwxMiAxOWwyLjUgMi41TDE3IDE5bDMgM1YxMGE4IDggMCAwIDAtOC04eiIvPjwvc3ZnPg==`
+  
+  const user = await getUser(userId);
 
   return (
     <div className="flex h-screen max-h-screen">
-
-      {/* Add Verification */}
 
       {/* Takes up half the screen */}
       <section className="remove-scrollbar container my-auto">
@@ -25,7 +27,7 @@ const Register = () => {
             <h1 className="bg-white text-black pr-3 text-3xl capitalize mb-12">Tergis</h1>
           </div>
 
-          {/* <PatientForm/> */}
+          <RegisterForm user={user} />
 
           <div className="text-14-regular px-2 mt-20 flex justify-between">
             <div className="flex">
