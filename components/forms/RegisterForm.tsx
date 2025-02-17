@@ -3,7 +3,8 @@
 import { z } from "zod"     // for validation
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { Form } from "../ui/form"
+import { Form, FormControl } from "../ui/form"
+import { RadioGroup } from "../ui/radio-group"
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
@@ -54,10 +55,16 @@ const RegisterForm = ({ user: { user:User } }) => {
       <h1 className="text-3xl pb-4">Registration Form</h1>
 
       <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex-1">
-        <section className="text-yellow-400 mb-12 space-y-4">
-          <h1 className="text-lg">Hello there!</h1>
-          <p className="">Hurry to add your information and get started now!</p>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
+        <section className="text-yellow-400 mb-12">
+          <h1 className="">Welcome!</h1>
+          <p className="text-gray-400">We have a long way to go. Hurry now to add your information and get started soon!</p>
+        </section>
+
+        <section className="text-yellow-400 mb-9 space-y-4">
+          <div className="mb-9 space-y-1">
+            <h2 className="">Personal Information</h2>
+          </div>
         </section>
 
         <CustomFormFieldTemplate
@@ -69,6 +76,28 @@ const RegisterForm = ({ user: { user:User } }) => {
           iconSource={iconExampleTwo}
           iconAlt='user'
         />
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='email'
+            label='Email Address'
+            placeholder='example28@gmail.com'
+            iconSource={iconExampleTwo}
+            iconAlt='user'
+          />
+
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name='phone'
+            label='Phone Number'
+            placeholder="(123) 456-789"
+            iconSource={iconExampleThree}
+            iconAlt="phone"
+          />
+        </div>
 
         <SubmitButton isLoading={isLoading}>Start Here</SubmitButton>
 
