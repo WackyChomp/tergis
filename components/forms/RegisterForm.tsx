@@ -4,7 +4,6 @@ import { z } from "zod"     // for validation
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Form, FormControl } from "../ui/form"
-import { RadioGroup } from "../ui/radio-group"
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
@@ -57,13 +56,13 @@ const RegisterForm = ({ user: { user:User } }) => {
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
         <section className="text-yellow-400 mb-12">
-          <h1 className="">Welcome!</h1>
+          <h1 className="header">Welcome!</h1>
           <p className="text-gray-400">We have a long way to go. Hurry now to add your information and get started soon!</p>
         </section>
 
         <section className="text-yellow-400 mb-9 space-y-4">
           <div className="mb-9 space-y-1">
-            <h2 className="">Personal Information</h2>
+            <h2 className="sub_header">Personal Information</h2>
           </div>
         </section>
 
@@ -98,6 +97,31 @@ const RegisterForm = ({ user: { user:User } }) => {
             iconAlt="phone"
           />
         </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.DATE_PICKER}
+            control={form.control}
+            name='birthDate'
+            label='Date of Birth'
+            iconSource={iconExampleTwo}
+            iconAlt='user'
+          />
+
+        </div>
+
+        
+        {/* <div className="flex flex-col gap-6 xl:flex-row">
+          
+        </div> */}
+
+        {/* <div className="flex flex-col gap-6 xl:flex-row">
+          
+        </div> */}
+
+        {/* <div className="flex flex-col gap-6 xl:flex-row">
+          
+        </div> */}
 
         <SubmitButton isLoading={isLoading}>Start Here</SubmitButton>
 

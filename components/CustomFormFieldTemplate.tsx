@@ -15,6 +15,10 @@ import { FormFieldType } from "./forms/MemberForm"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+
 {/* 
 This form component will act as a base for other forms throughout the app.
 Find more in the "forms" directory of "components".
@@ -37,7 +41,9 @@ interface CustomFormProps {
 
 const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) => {
   // destructure outside of parameter so it can pass entire prop object all at once
-  const { fieldType, iconSource, iconAlt, placeholder } = props
+  const { fieldType, iconSource, iconAlt, placeholder, showTimeSelect, dateFormat } = props
+
+  const calendarIcon = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMiPjxwYXRoIGQ9Ik04IDJ2NCIvPjxwYXRoIGQ9Ik0xNiAydjQiLz48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjQiIHJ4PSIyIi8+PHBhdGggZD0iTTMgMTBoMTgiLz48cGF0aCBkPSJNOCAxNGguMDEiLz48cGF0aCBkPSJNMTIgMTRoLjAxIi8+PHBhdGggZD0iTTE2IDE0aC4wMSIvPjxwYXRoIGQ9Ik04IDE4aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxOGguMDEiLz48cGF0aCBkPSJNMTYgMThoLjAxIi8+PC9zdmc+`
 
   switch (fieldType){
     case FormFieldType.INPUT:
@@ -74,6 +80,23 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
               value={field.value as E164Number | undefined}
               onChange={field.onChange}
               className="p-1.5"
+            />
+          </FormControl>
+        </div>
+      )
+
+    case FormFieldType.DATE_PICKER:
+      return(
+        <div className="bg-red-800 flex rounded-md border border-yellow-600">
+          <Image src={calendarIcon} alt='calendar' width={25} height={25} />
+          <FormControl>
+            <DatePicker 
+              selected={field.value} 
+              onChange={(date) => field.onChange(date)}
+              dateFormat={dateFormat ?? 'MMMM/dd/yyyy'}
+              showTimeSelect={showTimeSelect ?? false}
+              timeInputLabel='Time:'
+              wrapperClassName='date-picker'
             />
           </FormControl>
         </div>
