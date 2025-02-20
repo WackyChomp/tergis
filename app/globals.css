@@ -20,4 +20,8 @@
     .radio_group{
       @apply bg-blue-950 flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-green-500 p-3;
     }
+
+    .side_img{
+      @apply hidden h-full object-cover md:block;
+    }
   }

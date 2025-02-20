@@ -60,7 +60,7 @@ const Register = async ({ params: {userId} } : SearchParamProps) => {
         height={1200}
         width={1200}
         alt='half-page-image'
-        className="max-w-[600px] side-img"
+        className="max-w-[600px] side_img"
       />
     </div>
   );

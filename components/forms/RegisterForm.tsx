@@ -138,10 +138,48 @@ const RegisterForm = ({ user: { user:User } }) => {
           iconAlt="phone"
         />
 
-        
-        {/* <div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='address'
+            label='Address'
+            placeholder='1234 5th Street 6 Ave'
+            iconSource={iconExampleTwo}
+            iconAlt='user'
+          />
           
-        </div> */}
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='occupation'
+            label='Occupation'
+            placeholder='Adventurer'
+            iconSource={iconExampleTwo}
+            iconAlt='user'
+          />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name='emergencyContactName'
+            label='Emergency Contact Name'
+            placeholder="Bobby Redfield"
+            iconSource={iconExampleThree}
+            iconAlt="phone"
+          />
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.PHONE_INPUT}
+            control={form.control}
+            name='emergencyContactNumber'
+            label='Emergency Contact Number'
+            placeholder="(987) 654-321"
+            iconSource={iconExampleThree}
+            iconAlt="phone"
+          />
+        </div>
 
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           
