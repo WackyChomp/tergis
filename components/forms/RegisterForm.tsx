@@ -3,7 +3,11 @@
 import { z } from "zod"     // for validation
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+
 import { Form, FormControl } from "../ui/form"
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
+import { Label } from "../ui/label"
+
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
@@ -12,6 +16,7 @@ import { createUser } from "@/lib/actions/member.actions"
 import { useRouter } from "next/navigation"
 import { FormFieldType } from "./MemberForm"
 
+import { GenderOptions } from "@/constants"
 
 const RegisterForm = ({ user: { user:User } }) => {
   const iconExampleTwo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN3b3JkcyI+PHBvbHlsaW5lIHBvaW50cz0iMTQuNSAxNy41IDMgNiAzIDMgNiAzIDE3LjUgMTQuNSIvPjxsaW5lIHgxPSIxMyIgeDI9IjE5IiB5MT0iMTkiIHkyPSIxMyIvPjxsaW5lIHgxPSIxNiIgeDI9IjIwIiB5MT0iMTYiIHkyPSIyMCIvPjxsaW5lIHgxPSIxOSIgeDI9IjIxIiB5MT0iMjEiIHkyPSIxOSIvPjxwb2x5bGluZSBwb2ludHM9IjE0LjUgNi41IDE4IDMgMjEgMyAyMSA2IDE3LjUgOS41Ii8+PGxpbmUgeDE9IjUiIHgyPSI5IiB5MT0iMTQiIHkyPSIxOCIvPjxsaW5lIHgxPSI3IiB4Mj0iNCIgeTE9IjE3IiB5Mj0iMjAiLz48bGluZSB4MT0iMyIgeDI9IjUiIHkxPSIxOSIgeTI9IjIxIi8+PC9zdmc+`
@@ -109,6 +114,29 @@ const RegisterForm = ({ user: { user:User } }) => {
           />
 
         </div>
+
+        <CustomFormFieldTemplate
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name='gender'
+          label='Gender'
+          renderSkeleton={(field) => (
+            <FormControl>
+              <RadioGroup className="flex h-11 gap-6 xl:justify-between"
+                onValueChange={field.onChange} defaultValue={field.value}
+              >
+                {GenderOptions.map((option) => (
+                  <div key={option} className="radio_group">
+                    <RadioGroupItem value={option} id={option} />
+                    <Label htmlFor={option} className='cursor-pointer'>{option}</Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
+          )}
+          iconSource={iconExampleThree}
+          iconAlt="phone"
+        />
 
         
         {/* <div className="flex flex-col gap-6 xl:flex-row">

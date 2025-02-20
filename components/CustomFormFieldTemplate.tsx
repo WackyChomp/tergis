@@ -17,6 +17,7 @@ import PhoneInput from 'react-phone-number-input'
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { render } from "react-dom"
 
 
 {/* 
@@ -41,7 +42,7 @@ interface CustomFormProps {
 
 const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) => {
   // destructure outside of parameter so it can pass entire prop object all at once
-  const { fieldType, iconSource, iconAlt, placeholder, showTimeSelect, dateFormat } = props
+  const { fieldType, iconSource, iconAlt, placeholder, showTimeSelect, dateFormat, renderSkeleton } = props
 
   const calendarIcon = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWRheXMiPjxwYXRoIGQ9Ik04IDJ2NCIvPjxwYXRoIGQ9Ik0xNiAydjQiLz48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjQiIHJ4PSIyIi8+PHBhdGggZD0iTTMgMTBoMTgiLz48cGF0aCBkPSJNOCAxNGguMDEiLz48cGF0aCBkPSJNMTIgMTRoLjAxIi8+PHBhdGggZD0iTTE2IDE0aC4wMSIvPjxwYXRoIGQ9Ik04IDE4aC4wMSIvPjxwYXRoIGQ9Ik0xMiAxOGguMDEiLz48cGF0aCBkPSJNMTYgMThoLjAxIi8+PC9zdmc+`
 
@@ -100,6 +101,11 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
             />
           </FormControl>
         </div>
+      )
+
+    case FormFieldType.SKELETON:
+      return(
+        renderSkeleton ? renderSkeleton(field) : null
       )
 
 
