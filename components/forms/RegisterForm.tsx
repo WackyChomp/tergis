@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+
 import { z } from "zod"     // for validation
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -17,6 +19,9 @@ import { useRouter } from "next/navigation"
 import { FormFieldType } from "./MemberForm"
 
 import { GenderOptions } from "@/constants"
+import { SelectItem } from "../ui/select"
+
+import { Experts } from "@/constants"
 
 const RegisterForm = ({ user: { user:User } }) => {
   const iconExampleTwo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN3b3JkcyI+PHBvbHlsaW5lIHBvaW50cz0iMTQuNSAxNy41IDMgNiAzIDMgNiAzIDE3LjUgMTQuNSIvPjxsaW5lIHgxPSIxMyIgeDI9IjE5IiB5MT0iMTkiIHkyPSIxMyIvPjxsaW5lIHgxPSIxNiIgeDI9IjIwIiB5MT0iMTYiIHkyPSIyMCIvPjxsaW5lIHgxPSIxOSIgeDI9IjIxIiB5MT0iMjEiIHkyPSIxOSIvPjxwb2x5bGluZSBwb2ludHM9IjE0LjUgNi41IDE4IDMgMjEgMyAyMSA2IDE3LjUgOS41Ii8+PGxpbmUgeDE9IjUiIHgyPSI5IiB5MT0iMTQiIHkyPSIxOCIvPjxsaW5lIHgxPSI3IiB4Mj0iNCIgeTE9IjE3IiB5Mj0iMjAiLz48bGluZSB4MT0iMyIgeDI9IjUiIHkxPSIxOSIgeTI9IjIxIi8+PC9zdmc+`
@@ -166,7 +171,7 @@ const RegisterForm = ({ user: { user:User } }) => {
             control={form.control}
             name='emergencyContactName'
             label='Emergency Contact Name'
-            placeholder="Bobby Redfield"
+            placeholder="Person's Name"
             iconSource={iconExampleThree}
             iconAlt="phone"
           />
@@ -180,6 +185,34 @@ const RegisterForm = ({ user: { user:User } }) => {
             iconAlt="phone"
           />
         </div>
+
+        <section className="text-yellow-400 mb-9 space-y-4">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub_header">Information Goes Here</h2>
+          </div>
+        </section>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name='primaryExpert'
+            label='Primary Expert'
+            placeholder="Select an Expert"
+          >
+            {Experts.map((expert) => (
+              <SelectItem key={expert.name} value={expert.name}>
+                <div className="flex cursor-pointer items-center gap-5">
+                  <Image src={expert.image} alt={expert.name} 
+                    width={32} height={32}
+                    className='rounded-full boder border-blue-500'
+                  />
+                  <p>{expert.name}</p>
+                </div>
+              </SelectItem>
+            ))}
+          </CustomFormFieldTemplate>
+          </div>
 
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           
