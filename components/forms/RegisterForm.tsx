@@ -214,6 +214,28 @@ const RegisterForm = ({ user: { user:User } }) => {
           </CustomFormFieldTemplate>
           </div>
 
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name='allergies'
+              label='Allergies (optional)'
+              placeholder='Nuts, Pollen, Dust, Seafood'
+              iconSource={iconExampleTwo}
+              iconAlt='user'
+            />
+            
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name='currentMedication'
+              label='Current Medication (optional)'
+              placeholder='Tyleno #mg'
+              iconSource={iconExampleTwo}
+              iconAlt='user'
+            />
+          </div>
+
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           
         </div> */}

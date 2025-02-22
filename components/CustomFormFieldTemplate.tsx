@@ -11,6 +11,8 @@ import {
 
 import { Select, SelectValue, SelectContent, SelectTrigger } from "./ui/select"
 
+import { Textarea } from "./ui/textarea"
+
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Control } from "react-hook-form"
@@ -20,7 +22,6 @@ import PhoneInput from 'react-phone-number-input'
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { render } from "react-dom"
 
 
 {/* 
@@ -70,6 +71,18 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
             />
           </FormControl>
         </div>
+      )
+
+    case FormFieldType.TEXTAREA:
+      return(
+        <FormControl>
+          <Textarea 
+            placeholder={placeholder}
+            {...field}
+            className='shad-textarea'
+            disabled={props.disabled}
+          />
+        </FormControl>
       )
 
     case FormFieldType.PHONE_INPUT:
