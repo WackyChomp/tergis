@@ -27,6 +27,9 @@
 
 
     /* --------------- shadcn Override --------------- */
+    .shad-input{
+      @apply placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    }
     .shad-select-trigger{
       @apply bg-green-950 placeholder:text-gray-600 border-yellow-400 h-11 focus:ring-0 focus:ring-offset-0 !important;
     }
@@ -36,7 +39,7 @@
     }
 
     .shad-textarea{
-      @apply bg-red-950 border-yellow-500 placeholder:text-green-400 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+      @apply bg-red-950 border-yellow-500 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
     }
   }
 

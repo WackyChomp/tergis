@@ -204,8 +204,8 @@ const RegisterForm = ({ user: { user:User } }) => {
               <SelectItem key={expert.name} value={expert.name}>
                 <div className="flex cursor-pointer items-center gap-5">
                   <Image src={expert.image} alt={expert.name} 
-                    width={32} height={32}
-                    className='rounded-full boder border-blue-500'
+                    width={40} height={40}
+                    className='rounded-full p-0.5 border border-blue-500'
                   />
                   <p>{expert.name}</p>
                 </div>
@@ -221,8 +221,6 @@ const RegisterForm = ({ user: { user:User } }) => {
               name='allergies'
               label='Allergies (optional)'
               placeholder='Nuts, Pollen, Dust, Seafood'
-              iconSource={iconExampleTwo}
-              iconAlt='user'
             />
             
             <CustomFormFieldTemplate
@@ -231,8 +229,46 @@ const RegisterForm = ({ user: { user:User } }) => {
               name='currentMedication'
               label='Current Medication (optional)'
               placeholder='Tyleno #mg'
+            />
+          </div>
+
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name='insuranceProvider'
+              label='Insurance Provider'
+              placeholder='Crimson Cross'
               iconSource={iconExampleTwo}
               iconAlt='user'
+            />
+            
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name='insurancePolicyNumber'
+              label='Insurance Policy Number'
+              placeholder='asdfghjkl12345678'
+              iconSource={iconExampleTwo}
+              iconAlt='user'
+            />
+          </div>
+
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name='familyMedicalHistory'
+              label='Family Medical History'
+              placeholder='[parent] has [condition]'
+            />
+            
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name='pastMedicalHistory'
+              label='Past Medical History'
+              placeholder='Fractured spleen'
             />
           </div>
 

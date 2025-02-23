@@ -53,7 +53,7 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
   switch (fieldType){
     case FormFieldType.INPUT:
       return(
-        <div className="flex rounded-2xl border border-yellow-500 bg-gray-800">
+        <div className="flex rounded-2xl border border-yellow-500 bg-gray-900">
           {iconSource && (
             <Image src={iconSource} 
               alt = {iconAlt || 'icon-alt'}
@@ -79,7 +79,7 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
           <Textarea 
             placeholder={placeholder}
             {...field}
-            className='shad-textarea'
+            className='shad-textarea text-green-400 font-bold'
             disabled={props.disabled}
           />
         </FormControl>
