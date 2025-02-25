@@ -18,7 +18,7 @@ import { createUser } from "@/lib/actions/member.actions"
 import { useRouter } from "next/navigation"
 import { FormFieldType } from "./MemberForm"
 
-import { GenderOptions } from "@/constants"
+import { GenderOptions, IdentificationTypes } from "@/constants"
 import { SelectItem } from "../ui/select"
 
 import { Experts } from "@/constants"
@@ -271,6 +271,30 @@ const RegisterForm = ({ user: { user:User } }) => {
               placeholder='Fractured spleen'
             />
           </div>
+
+        <section className="text-yellow-400 mb-9 space-y-4">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub_header">Identification & Verification</h2>
+          </div>
+        </section>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name='identificationType'
+            label='Identification Type'
+            placeholder="Select an Identification Type"
+          >
+            {IdentificationTypes.map((identificationType) => (
+              <SelectItem key={identificationType} value={identificationType}>
+                <div className="flex cursor-pointer items-center gap-5">
+                  <p>{identificationType}</p>
+                </div>
+              </SelectItem>
+            ))}
+          </CustomFormFieldTemplate>
+        </div>
 
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           

@@ -49,3 +49,17 @@ export const Experts = [
     name: 'Margret Thyme',
   },
 ]
+
+export const IdentificationTypes = [
+  'Birth Certificate',
+  "Driver's License",
+  'Medical Insurance Card/Policy',
+  'Military ID Card',
+  'National ID Card',
+  'Passport',
+  'Residental Green Card',
+  'Social Security Card',
+  'State ID Card',
+  'Student ID Card',
+  'Voter ID Card',
+];
