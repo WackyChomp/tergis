@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import { Form, FormControl } from "../ui/form"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
+import FileUploader from "../FileUploader"
 
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
@@ -295,6 +296,22 @@ const RegisterForm = ({ user: { user:User } }) => {
             ))}
           </CustomFormFieldTemplate>
         </div>
+
+
+        <CustomFormFieldTemplate
+          fieldType={FormFieldType.SKELETON}
+          control={form.control}
+          name='identificationDocument'
+          label='Scanned copy of identification document:'
+          renderSkeleton={(field) => (
+            <FormControl>
+              <FileUploader />
+            </FormControl>
+          )}
+          iconSource={iconExampleThree}
+          iconAlt="phone"
+        />
+
 
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           
