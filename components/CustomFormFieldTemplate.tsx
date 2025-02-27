@@ -9,8 +9,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
+import { Checkbox } from "./ui/checkbox"
 import { Select, SelectValue, SelectContent, SelectTrigger } from "./ui/select"
-
 import { Textarea } from "./ui/textarea"
 
 import Image from "next/image"
@@ -137,6 +137,22 @@ const RenderField = ({ field, props } : { field:any; props:CustomFormProps }) =>
               {props.children}
             </SelectContent>
           </Select>
+        </FormControl>
+      )
+
+    case FormFieldType.CHECKBOX:
+      return(
+        <FormControl>
+          <div className="flex items-center gap-5">
+            <Checkbox 
+              id={props.name}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+            />
+            <label htmlFor={props.name} className="">
+              {props.label}
+            </label>
+          </div>
         </FormControl>
       )
 
