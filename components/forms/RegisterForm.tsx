@@ -305,7 +305,7 @@ const RegisterForm = ({ user: { user:User } }) => {
           label='Scanned copy of identification document:'
           renderSkeleton={(field) => (
             <FormControl>
-              <FileUploader />
+              <FileUploader files={field.value} onChange={field.onChange} />
             </FormControl>
           )}
           iconSource={iconExampleThree}

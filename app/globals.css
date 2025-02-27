@@ -25,6 +25,13 @@
       @apply hidden h-full object-cover md:block;
     }
 
+    
+    .file_upload {
+      @apply bg-green-950 hover:bg-green-700 transition text-[14px] rounded-xl cursor-pointer border border-dashed p-4 flex flex-col items-center justify-center;
+    }
+    .file_upload_label {
+      @apply flex flex-col justify-center gap-2 text-center rounded-2xl animate-pulse bg-green-700 text-black m-1 p-1;
+    }
 
     /* --------------- shadcn Override --------------- */
     .shad-input{
