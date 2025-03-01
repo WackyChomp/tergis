@@ -312,6 +312,30 @@ const RegisterForm = ({ user: { user:User } }) => {
           iconAlt="phone"
         />
 
+        <section className="text-yellow-400 mb-9 space-y-4">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub_header">Consent and Policy</h2>
+          </div>
+
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name='treatmentConsent'
+            label='I hearby consent to treatment'
+          />
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name='disclosureConsent'
+            label='I hearby consent to disclosure'
+          />
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name='privacyConsent'
+            label='I hearby consent to privacy'
+          />
+        </section>
 
         {/* <div className="flex flex-col gap-6 xl:flex-row">
           

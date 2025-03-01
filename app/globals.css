@@ -33,6 +33,10 @@
       @apply flex flex-col justify-center gap-2 text-center rounded-2xl animate-pulse bg-green-700 text-black m-1 p-1;
     }
 
+    .checkbox_label{
+      @apply cursor-pointer text-sm font-medium text-green-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+    }
+
     /* --------------- shadcn Override --------------- */
     .shad-input{
       @apply placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
