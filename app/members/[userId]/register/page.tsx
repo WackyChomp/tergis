@@ -13,8 +13,8 @@ const Register = async ({ params: {userId} } : SearchParamProps) => {
     <div className="flex h-screen max-h-screen">
 
       {/* Takes up half the screen */}
-      <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[500px]">
+      <section className="remove-scrollbar container">
+        <div className="sub-container max-w-[700px] flex-1 flex-col py-10">
 
           <div className="flex">
             <Image 

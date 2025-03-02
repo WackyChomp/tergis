@@ -61,7 +61,7 @@ const RegisterForm = ({ user: { user:User } }) => {
   }
   
   return (
-    <div className="bg-gray-900 py-1 px-4 rounded-3xl">
+    <div className="bg-orange-900 hover:bg-gray-900 transition py-1 px-4 rounded-3xl">
       <h1 className="text-3xl pb-4">Registration Form</h1>
 
       <Form {...form}>
@@ -71,6 +71,7 @@ const RegisterForm = ({ user: { user:User } }) => {
           <p className="text-gray-400">We have a long way to go. Hurry now to add your information and get started soon!</p>
         </section>
 
+        <hr className="text-orange-700 border border-dashed" />
         <section className="text-yellow-400 mb-9 space-y-4">
           <div className="mb-9 space-y-1">
             <h2 className="sub_header">Personal Information</h2>
@@ -119,30 +120,29 @@ const RegisterForm = ({ user: { user:User } }) => {
             iconAlt='user'
           />
 
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name='gender'
+            label='Gender'
+            renderSkeleton={(field) => (
+              <FormControl>
+                <RadioGroup className="flex h-11 gap-6 xl:justify-between"
+                  onValueChange={field.onChange} defaultValue={field.value}
+                >
+                  {GenderOptions.map((option) => (
+                    <div key={option} className="radio_group">
+                      <RadioGroupItem value={option} id={option} />
+                      <Label htmlFor={option} className='cursor-pointer'>{option}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+            )}
+            iconSource={iconExampleThree}
+            iconAlt="phone"
+          />
         </div>
-
-        <CustomFormFieldTemplate
-          fieldType={FormFieldType.SKELETON}
-          control={form.control}
-          name='gender'
-          label='Gender'
-          renderSkeleton={(field) => (
-            <FormControl>
-              <RadioGroup className="flex h-11 gap-6 xl:justify-between"
-                onValueChange={field.onChange} defaultValue={field.value}
-              >
-                {GenderOptions.map((option) => (
-                  <div key={option} className="radio_group">
-                    <RadioGroupItem value={option} id={option} />
-                    <Label htmlFor={option} className='cursor-pointer'>{option}</Label>
-                  </div>
-                ))}
-              </RadioGroup>
-            </FormControl>
-          )}
-          iconSource={iconExampleThree}
-          iconAlt="phone"
-        />
 
         <div className="flex flex-col gap-6 xl:flex-row">
           <CustomFormFieldTemplate
@@ -187,6 +187,7 @@ const RegisterForm = ({ user: { user:User } }) => {
           />
         </div>
 
+        <hr className="text-orange-700 border border-dashed" />
         <section className="text-yellow-400 mb-9 space-y-4">
           <div className="mb-9 space-y-1">
             <h2 className="sub_header">Information Goes Here</h2>
@@ -273,6 +274,7 @@ const RegisterForm = ({ user: { user:User } }) => {
             />
           </div>
 
+        <hr className="text-orange-700 border border-dashed" />
         <section className="text-yellow-400 mb-9 space-y-4">
           <div className="mb-9 space-y-1">
             <h2 className="sub_header">Identification & Verification</h2>
@@ -312,6 +314,7 @@ const RegisterForm = ({ user: { user:User } }) => {
           iconAlt="phone"
         />
 
+        <hr className="text-orange-700 border border-dashed" />
         <section className="text-yellow-400 mb-9 space-y-4">
           <div className="mb-9 space-y-1">
             <h2 className="sub_header">Consent and Policy</h2>
