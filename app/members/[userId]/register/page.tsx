@@ -29,7 +29,7 @@ const Register = async ({ params: {userId} } : SearchParamProps) => {
 
           <RegisterForm user={user} />
 
-          <div className="text-14-regular px-2 mt-20 flex justify-between">
+          <div className="bg-red-950 p-1 rounded-xl text-14-regular px-2 mt-10 flex justify-between">
             <div className="flex">
               <Image src={iconExample}
                 height={200} width={200} alt='icon' className="bg-red-500 rounded-full mr-1 h-7 w-fit"
