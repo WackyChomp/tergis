@@ -3,6 +3,7 @@
 import React, {useCallback} from 'react'
 import Image from 'next/image'
 import {useDropzone} from 'react-dropzone'
+import { convertFileToUrl } from '@/lib/utils'
 
 type FileUploaderProps = {
   files: File[] | undefined,
