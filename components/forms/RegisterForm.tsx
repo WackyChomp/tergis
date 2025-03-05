@@ -36,9 +36,9 @@ const RegisterForm = ({ user }: { user:User } ) => {
     resolver: zodResolver(MemberFormValidation),
     defaultValues: {
       ...MemberFormDefaultValues,
-      name: "",
-      email: "",
-      phone: "",
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
     },
   })
  
@@ -318,6 +318,13 @@ const RegisterForm = ({ user }: { user:User } ) => {
           </CustomFormFieldTemplate>
         </div>
 
+        <CustomFormFieldTemplate
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="identificationNumber"
+          label="Identification Number"
+          placeholder="123456789"
+        />
 
         <CustomFormFieldTemplate
           fieldType={FormFieldType.SKELETON}

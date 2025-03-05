@@ -23,8 +23,8 @@ export interface Member extends Models.Document{
   insurancePolicyNumber: string;
   familyMedicalHistory: string | undefined;
   pastMedicalHistory: string | undefined;
-  primaryPhysician: string;
+  primaryExpert: string;
   privacyConsent: boolean;
-  //gender: Gender;
+  gender: Gender;
 //  : string;
 }

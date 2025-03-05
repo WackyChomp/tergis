@@ -3,7 +3,6 @@
 import { ID, Query } from "node-appwrite"
 import { BUCKET_ID, APPWRITE_DB, ENDPOINT, APPWRITE_COLLECTION_MEMBER, APPWRITE_PROJECT_ID, databases, storage, users } from '../appwrite.config'
 import { parseStringify } from "../utils"
-import { IdentificationTypes } from "@/constants"
 
 import { InputFile } from 'node-appwrite/file';
 
@@ -17,6 +16,8 @@ export const createUser = async (user:CreateUserParams) => {
       undefined,      // refers to password , parameter order matters
       user.name, 
     )
+
+    return parseStringify(newUser)
     
   } catch (error: any) {
     if(error && error?.code === 409){
@@ -26,6 +27,7 @@ export const createUser = async (user:CreateUserParams) => {
 
       return documents?.users[0]
     }
+    console.error('An error occured while creating new user:', error)
   }
 }
 
@@ -39,13 +41,14 @@ export const getUser = async (userId: string) => {
   }
 }
 
-export const registerMember = async ({ IdentificationDocument, ...member } : RegisterUserParams) =>{
+export const registerMember = async ({ identificationDocument, ...member } : RegisterUserParams) =>{
   try {
     let file;
-    if(IdentificationDocument){
-      const inputFile = InputFile.fromBuffer(
-        IdentificationDocument?.get('blobFile') as Blob,
-        IdentificationDocument?.get('fileName') as string,
+    if(identificationDocument){
+      const inputFile = identificationDocument && 
+        InputFile.fromBuffer(
+          identificationDocument?.get('blobFile') as Blob,
+          identificationDocument?.get('fileName') as string,
       )
 
       file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile)
@@ -56,11 +59,14 @@ export const registerMember = async ({ IdentificationDocument, ...member } : Reg
       APPWRITE_COLLECTION_MEMBER!,
       ID.unique(),
       {
-        IdentificationDocument: file?.$id || null,
-        IdentificationUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${APPWRITE_PROJECT_ID}`,
-        ...member
+        identificationDocumentId: file?.$id || null,
+        identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${APPWRITE_PROJECT_ID}`,
+        ...member,
       }
     )
+
+    return parseStringify(newMember);
+
   } catch (error) {
     console.log(error);
   }
