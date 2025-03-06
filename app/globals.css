@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  @layer base {
+
+  }
+
+  @layer utilities {
+    .header{
+      @apply text-[32px] font-bold md:text-[36px] md:font-bold
+    }
+    .sub_header{
+      @apply text-[18px] font-bold md:text-[24px] md:font-bold
+    }
+    .primary-btn{
+      @apply bg-yellow-300 text-gray-400 hover:bg-yellow-500 hover:text-black !important;
+    }
+    
+    .radio_group{
+      @apply bg-blue-950 flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-green-500 p-3;
+    }
+
+    .side_img{
+      @apply hidden h-full object-cover md:block;
+    }
+
+    
+    .file_upload {
+      @apply bg-green-950 hover:bg-green-700 transition text-[14px] rounded-xl cursor-pointer border border-dashed p-4 flex flex-col items-center justify-center;
+    }
+    .file_upload_label {
+      @apply flex flex-col justify-center gap-2 text-center rounded-2xl animate-pulse bg-green-700 text-black m-1 p-1;
+    }
+
+    .checkbox_label{
+      @apply cursor-pointer text-sm font-medium text-green-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+    }
+
+    /* --------------- shadcn Override --------------- */
+    .shad-input{
+      @apply placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    }
+    .shad-select-trigger{
+      @apply bg-green-950 placeholder:text-gray-600 border-yellow-400 h-11 focus:ring-0 focus:ring-offset-0 !important;
+    }
+
+    .shad-select-content{
+      @apply bg-yellow-900 border-orange-500 !important;
+    }
+
+    .shad-textarea{
+      @apply bg-red-950 border-yellow-500 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    }
+  }
+
+  
+
+  @layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
