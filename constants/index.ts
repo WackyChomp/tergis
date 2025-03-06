@@ -12,7 +12,7 @@ export const MemberFormDefaultValues = {
   occupation: "",
   emergencyContactName: "",
   emergencyContactNumber: "",
-  primaryPhysician: "",
+  primaryExpert: "",
   insuranceProvider: "",
   insurancePolicyNumber: "",
   allergies: "",

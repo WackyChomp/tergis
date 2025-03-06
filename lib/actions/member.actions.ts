@@ -54,6 +54,14 @@ export const registerMember = async ({ identificationDocument, ...member } : Reg
       file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile)
     }
 
+    // console.log(
+    //   {
+    //     identificationDocumentId: file?.$id || null,
+    //     identificationDocumentUrl: `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file?.$id}/view?project=${APPWRITE_PROJECT_ID}`,
+    //     gender: member.gender
+    //   }
+    // )
+
     const newMember = await databases.createDocument(
       APPWRITE_DB!,
       APPWRITE_COLLECTION_MEMBER!,

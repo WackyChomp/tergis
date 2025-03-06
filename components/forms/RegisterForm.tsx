@@ -67,6 +67,8 @@ const RegisterForm = ({ user }: { user:User } ) => {
         birthDate: new Date(values.birthDate),
         identificationDocument: formData,
       }
+
+      // @ts-ignore
       const newMember = await registerMember(memberData);
 
       if(newMember) {
