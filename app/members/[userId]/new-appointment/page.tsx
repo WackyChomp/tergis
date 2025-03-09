@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import MemberForm from "@/components/forms/MemberForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
 
 export default function NewAppointment() {
   // Example Icons
@@ -31,6 +31,7 @@ export default function NewAppointment() {
 
           <h1 className="bg-orange-500 p-4 text-black text-3xl">
             NEW APPOINTMENT COMPONENT HERE
+            <AppointmentForm />
           </h1>
 
           <div className="text-14-regular px-2 mt-20 flex justify-between">
