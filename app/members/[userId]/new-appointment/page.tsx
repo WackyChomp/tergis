@@ -1,13 +1,15 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import AppointmentForm from "@/components/forms/AppointmentForm";
+import { getMember } from "@/lib/actions/member.actions";
 
-export default function NewAppointment() {
+export default async function NewAppointment({ params:{userId}} : SearchParamProps ) {
   // Example Icons
   const iconExample = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdob3N0Ij48cGF0aCBkPSJNOSAxMGguMDEiLz48cGF0aCBkPSJNMTUgMTBoLjAxIi8+PHBhdGggZD0iTTEyIDJhOCA4IDAgMCAwLTggOHYxMmwzLTMgMi41IDIuNUwxMiAxOWwyLjUgMi41TDE3IDE5bDMgM1YxMGE4IDggMCAwIDAtOC04eiIvPjwvc3ZnPg==`
   const iconOne = `https://img.icons8.com/ios/300/ghost--v1.png`
   //const icon = ``
+
+  const member = await getMember(userId);
   
   return (
     <div className="flex h-screen max-h-screen">
@@ -31,7 +33,11 @@ export default function NewAppointment() {
 
           <h1 className="bg-orange-500 p-4 text-black text-3xl">
             NEW APPOINTMENT COMPONENT HERE
-            <AppointmentForm />
+            <AppointmentForm 
+              type='create'
+              userId={userId}
+              memberId={member.$id}
+            />
           </h1>
 
           <div className="text-14-regular px-2 mt-20 flex justify-between">

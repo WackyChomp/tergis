@@ -41,6 +41,20 @@ export const getUser = async (userId: string) => {
   }
 }
 
+export const getMember = async (userId: string) => {
+  try {
+    const members = await databases.listDocuments(
+      APPWRITE_DB!,
+      APPWRITE_COLLECTION_MEMBER!,
+      [ Query.equal(`$userId`, userId) ]
+    );
+
+    return parseStringify(members.documents[0]);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const registerMember = async ({ identificationDocument, ...member } : RegisterUserParams) =>{
   try {
     let file;
