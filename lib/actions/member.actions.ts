@@ -46,7 +46,7 @@ export const getMember = async (userId: string) => {
     const members = await databases.listDocuments(
       APPWRITE_DB!,
       APPWRITE_COLLECTION_MEMBER!,
-      [ Query.equal(`$userId`, userId) ]
+      [ Query.equal('userId', userId) ]
     );
 
     return parseStringify(members.documents[0]);

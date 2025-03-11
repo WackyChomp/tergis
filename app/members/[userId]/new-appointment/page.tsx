@@ -36,7 +36,7 @@ export default async function NewAppointment({ params:{userId}} : SearchParamPro
             <AppointmentForm 
               type='create'
               userId={userId}
-              memberId={member.$id}
+              memberId={member?.$id}
             />
           </h1>
 
@@ -72,6 +72,7 @@ export default async function NewAppointment({ params:{userId}} : SearchParamPro
         width={1200}
         alt='appointment'
         className="max-w-[400px] side-img bg-bottom"
+        unoptimized
       />
     </div>
   );

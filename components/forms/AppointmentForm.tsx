@@ -1,15 +1,21 @@
 "use client"
 
 import { z } from "zod"     // for validation
+import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+
 import { Form } from "../ui/form"
+import { SelectItem } from "../ui/select"
+
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from '../../lib/validation'
 import { createUser } from "@/lib/actions/member.actions"
 import { useRouter } from "next/navigation"
+
+import { Experts } from "@/constants"
 
 
 export enum FormFieldType {     // ensure type validation
@@ -54,9 +60,7 @@ const AppointmentForm = ({ userId, memberId, type } : {
      const userData = { name, email, phone };
      const user = await createUser(userData);
      
-     if(user){
-       router.push(`/members/${user.$id}/register`)
-     } 
+
 
     } catch (error) {
       console.log(error)
@@ -73,6 +77,41 @@ const AppointmentForm = ({ userId, memberId, type } : {
           <h1 className="text-lg">Hello there!</h1>
           <p className="">Schedule an appointment now!</p>
         </section>
+
+        { type !== 'cancel' && (
+          <>
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.SELECT}
+              control={form.control}
+              name='primaryExpert'
+              label='Primary Expert'
+              placeholder="Select an Expert"
+            >
+              {Experts.map((expert) => (
+                <SelectItem key={expert.name} value={expert.name}>
+                  <div className="flex cursor-pointer items-center gap-5">
+                    <Image src={expert.image} alt={expert.name} 
+                      width={40} height={40}
+                      className='rounded-full p-0.5 border border-blue-500'
+                    />
+                    <p>{expert.name}</p>
+                  </div>
+                </SelectItem>
+              ))}
+            </CustomFormFieldTemplate>
+
+            <CustomFormFieldTemplate
+              fieldType={FormFieldType.DATE_PICKER}
+              control={form.control}
+              name='schedule'
+              label='Expected Appointment Date'
+              iconSource={iconExampleTwo}
+              iconAlt='user'
+              showTimeSelect='EMPTY STRING DOES NOT SHOW TIME'
+              dateFormat="MM/dd/yyy - h:mm aa"
+            />
+          </>
+)}
 
         <CustomFormFieldTemplate
           fieldType={FormFieldType.INPUT}
