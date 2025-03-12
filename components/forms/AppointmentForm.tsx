@@ -32,7 +32,7 @@ export enum FormFieldType {     // ensure type validation
 const AppointmentForm = ({ userId, memberId, type } : {
   userId:string;
   memberId: string;
-  type: 'create' | 'cancel';
+  type: 'create' | 'cancel' | 'schedule';
   }) => {
   const iconExampleTwo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN3b3JkcyI+PHBvbHlsaW5lIHBvaW50cz0iMTQuNSAxNy41IDMgNiAzIDMgNiAzIDE3LjUgMTQuNSIvPjxsaW5lIHgxPSIxMyIgeDI9IjE5IiB5MT0iMTkiIHkyPSIxMyIvPjxsaW5lIHgxPSIxNiIgeDI9IjIwIiB5MT0iMTYiIHkyPSIyMCIvPjxsaW5lIHgxPSIxOSIgeDI9IjIxIiB5MT0iMjEiIHkyPSIxOSIvPjxwb2x5bGluZSBwb2ludHM9IjE0LjUgNi41IDE4IDMgMjEgMyAyMSA2IDE3LjUgOS41Ii8+PGxpbmUgeDE9IjUiIHgyPSI5IiB5MT0iMTQiIHkyPSIxOCIvPjxsaW5lIHgxPSI3IiB4Mj0iNCIgeTE9IjE3IiB5Mj0iMjAiLz48bGluZSB4MT0iMyIgeDI9IjUiIHkxPSIxOSIgeTI9IjIxIi8+PC9zdmc+`
   const iconExampleThree = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBob25lIj48cGF0aCBkPSJNMjIgMTYuOTJ2M2EyIDIgMCAwIDEtMi4xOCAyIDE5Ljc5IDE5Ljc5IDAgMCAxLTguNjMtMy4wNyAxOS41IDE5LjUgMCAwIDEtNi02IDE5Ljc5IDE5Ljc5IDAgMCAxLTMuMDctOC42N0EyIDIgMCAwIDEgNC4xMSAyaDNhMiAyIDAgMCAxIDIgMS43MiAxMi44NCAxMi44NCAwIDAgMCAuNyAyLjgxIDIgMiAwIDAgMS0uNDUgMi4xMUw4LjA5IDkuOTFhMTYgMTYgMCAwIDAgNiA2bDEuMjctMS4yN2EyIDIgMCAwIDEgMi4xMS0uNDUgMTIuODQgMTIuODQgMCAwIDAgMi44MS43QTIgMiAwIDAgMSAyMiAxNi45MnoiLz48L3N2Zz4=`
@@ -56,15 +56,19 @@ const AppointmentForm = ({ userId, memberId, type } : {
     // ✅ This will be type-safe and validated.
     setIsLoading(true);
 
-    try {
-     const userData = { name, email, phone };
-     const user = await createUser(userData);
-     
+  }
 
-
-    } catch (error) {
-      console.log(error)
-    }
+  let buttonLabel;
+  switch (type){
+    case 'cancel':
+      buttonLabel = 'Cancel Appointment'
+      break;
+    case 'create':
+      buttonLabel = 'Create Appointment'
+      break;
+    case 'schedule':
+      buttonLabel = 'Schedule Appointment'
+      break;
   }
   
   return (
@@ -110,40 +114,37 @@ const AppointmentForm = ({ userId, memberId, type } : {
               showTimeSelect='EMPTY STRING DOES NOT SHOW TIME'
               dateFormat="MM/dd/yyy - h:mm aa"
             />
+
+            <div className="flex flex-col gap-10 xl:flex-row">
+              <CustomFormFieldTemplate
+                fieldType={FormFieldType.TEXTAREA}
+                control={form.control}
+                name='reason'
+                label='Reason for appointment'
+                placeholder='Please enter a splendid reason for appointment!'
+              />
+              <CustomFormFieldTemplate
+                fieldType={FormFieldType.TEXTAREA}
+                control={form.control}
+                name='notes'
+                label='Notes'
+                placeholder='Enter a note!'
+              />
+            </div>
           </>
-)}
+        )}
 
-        <CustomFormFieldTemplate
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name='name'
-          label='Full Name'
-          placeholder='Enter a NAME'
-          iconSource={iconExampleTwo}
-          iconAlt='user'
-        />
+        {type === 'cancel' && (
+          <CustomFormFieldTemplate
+            fieldType={FormFieldType.TEXTAREA}
+            control={form.control}
+            name='cancellationReason'
+            label='Provide reason for cancellation :('
+            placeholder='Enter a reason for cancellation!'
+          />
+        )}
 
-        <CustomFormFieldTemplate
-          fieldType={FormFieldType.INPUT}
-          control={form.control}
-          name='email'
-          label='Email Address'
-          placeholder='example28@gmail.com'
-          iconSource={iconExampleTwo}
-          iconAlt='user'
-        />
-
-        <CustomFormFieldTemplate
-          fieldType={FormFieldType.PHONE_INPUT}
-          control={form.control}
-          name='phone'
-          label='Phone Number'
-          placeholder="(123) 456-789"
-          iconSource={iconExampleThree}
-          iconAlt="phone"
-        />
-
-        <SubmitButton isLoading={isLoading}>Start Here</SubmitButton>
+        <SubmitButton isLoading={isLoading} className={`${type === 'cancel' ? 'bg-red-500' : 'bg-green-500'}`}>{buttonLabel}</SubmitButton>
 
       </form>
     </Form>
