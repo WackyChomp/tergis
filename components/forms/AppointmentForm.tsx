@@ -11,8 +11,8 @@ import { SelectItem } from "../ui/select"
 import CustomFormFieldTemplate from "../CustomFormFieldTemplate"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { UserFormValidation } from '../../lib/validation'
-import { createUser } from "@/lib/actions/member.actions"
+import { getAppointmentSchema } from '../../lib/validation'
+import { createAppointment } from "@/lib/actions/appointment.actions"
 import { useRouter } from "next/navigation"
 
 import { Experts } from "@/constants"
@@ -40,21 +40,61 @@ const AppointmentForm = ({ userId, memberId, type } : {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false);
 
+  const AppointmentFormValidation = getAppointmentSchema(type);
+
   // 1. Define your form.
-  const form = useForm<z.infer<typeof UserFormValidation>>({
-    resolver: zodResolver(UserFormValidation),
+  const form = useForm<z.infer<typeof AppointmentFormValidation>>({
+    resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
+      primaryExpert: "",
+      schedule: new Date(),
+      reason: "",
+      note: "",
+      cancellationReason: "",
     },
   })
  
   // 2. Define a submit handler.
-  async function onSubmit({ name, email, phone }: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof AppointmentFormValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     setIsLoading(true);
+
+    let status;
+    switch (type){
+      case 'schedule':
+        status = 'scheduled';
+        break;
+      case 'cancel':
+        status = 'cancelled';
+        break;
+      default:
+        status = 'pending';      
+        break;
+    }
+
+    try{
+      if(type === 'create' && memberId){
+        const appointmentData = {
+          userId,
+          member: memberId,
+          primaryExpert: values.primaryExpert,
+          schedule: new Date(values.schedule),
+          reason: values.reason!,
+          note: values.note,
+          status: status as Status,
+        }
+        const appointment = await createAppointment(appointmentData)   // send to backend
+
+        if(appointment){
+          form.reset();
+          router.push(`/members/${userId}/new-appointment/success?appointmentId=${appointment.id}`)
+        }
+      }
+
+    } catch(error){
+      console.log(error)
+    }
 
   }
 
@@ -126,7 +166,7 @@ const AppointmentForm = ({ userId, memberId, type } : {
               <CustomFormFieldTemplate
                 fieldType={FormFieldType.TEXTAREA}
                 control={form.control}
-                name='notes'
+                name='note'
                 label='Notes'
                 placeholder='Enter a note!'
               />
