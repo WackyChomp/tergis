@@ -1,3 +1,5 @@
+'use server'      // needed b/c w/o it, database is trying to fetch from client side
+
 import { ID } from 'node-appwrite';
 import { APPWRITE_DB, APPWRITE_COLLECTION_APPOINTMENT, databases } from '../appwrite.config';
 import { parseStringify } from '../utils';

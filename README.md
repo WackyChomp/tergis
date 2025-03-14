@@ -6,7 +6,7 @@
 <div align="center" id='readme-top'>
   <img src="https://cdn.dribbble.com/users/5030338/screenshots/11158900/media/4a1c09cd612996098031920bf821a9ea.gif" alt="Logo" target='blank' width="350" height="200" style='border-radius: 1em'>
 
-  <h3 align="center">WIP Name</h3>
+  <h3 align="center">Tergis</h3>
 
   <p align="center">
     Management system to keep your network close
@@ -33,6 +33,12 @@
     <li><a href="#built-with">Built With</a></li>
     <li><a href="#folder-structure">Folder Structure</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#setup">Setup</a></li>
+      </ul>
+    </li>
     <!--<li><a href="#"></a></li>-->
     <!--<li><a href="#"></a></li>-->
   </ol>
@@ -96,6 +102,27 @@ General overview of folder/files
   |-- appwrite.types.ts
   |-- index.d.ts
 ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Setup
+Quickly running locally
+1. Clone the repo
+   ```sh
+   git clone https://github.com/WackyChomp/tergis.git
+   ```
+2. Install NPM packages into root directory or same directory as "<u>package.json</u>"
+   ```sh
+   npm install
+   ```
+3. Running on local computer <b>[Run this in root directory]</b>
+   ```
+   npm run dev
+   ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
