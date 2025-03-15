@@ -37,6 +37,17 @@
       @apply cursor-pointer text-sm font-medium text-green-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
     }
 
+
+
+    /* --------------- Success Page --------------- */
+    .success_img{
+      @apply m-auto flex flex-1 flex-col items-center justify-between gap-10 py-10;
+    }
+
+    .request_details{
+      @apply flex w-full flex-col items-center gap-8 border-y-2 border border-yellow-500 py-8 md:w-fit md:flex-row;
+    }
+
     /* --------------- shadcn Override --------------- */
     .shad-input{
       @apply placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
