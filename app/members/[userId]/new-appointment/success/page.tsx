@@ -1,8 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getAppointment } from '@/lib/actions/appointment.actions';
+import { Experts } from '@/constants';
+import { formatDateTime } from '@/lib/utils';
 
-const Success = () => {
+const Success = async ({ params:{userId}, searchParams} : SearchParamProps) => {
+  // pull appointmentId with searchparams from dynamic route
+  const appointmentId = (searchParams?.appointmentId as string) || '';
+  const appointment = await getAppointment(appointmentId);
+
+  const expert = Experts.find((expert) => expert.name === appointment.primaryExpert)
+
   return (
     <div className='flex h-screen max-h-screen px-[5%]'>
       <div className="success_img">
@@ -34,7 +43,24 @@ const Success = () => {
         <section className='request_details'>
           <p>Requested Appointment Details:</p>
           <div className="flex items-center gap-6">
-            Image
+            <Image 
+              src={expert?.image!}
+              alt='expert person'
+              width={100}
+              height={100}
+              className='size-8'
+            />
+            <p className="whitespace-nowrap">Expert. {expert?.name}</p>
+          </div>
+
+          <div className="flex gap-4">
+            <Image 
+              src={expert?.image!}
+              alt='expert person'
+              width={30}
+              height={30}
+            />
+            <p>{formatDateTime(appointment.schedule).dateTime}</p>
           </div>
         </section>
       </div>
