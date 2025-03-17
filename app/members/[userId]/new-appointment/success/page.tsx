@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { Button } from '@/components/ui/button';
 import Image from 'next/image'
 import { getAppointment } from '@/lib/actions/appointment.actions';
 import { Experts } from '@/constants';
@@ -63,6 +64,16 @@ const Success = async ({ params:{userId}, searchParams} : SearchParamProps) => {
             <p>{formatDateTime(appointment.schedule).dateTime}</p>
           </div>
         </section>
+
+        <Button variant='outline' className='bg-red-900' asChild>
+          <Link href={`/members/${userId}/new-appointment`}>
+            New Appointment
+          </Link>
+        </Button>
+
+        <p className="justify-items-end text-blue-400 xl:text-left">
+          © 20XX Tergis
+        </p>
       </div>
     </div>
   )

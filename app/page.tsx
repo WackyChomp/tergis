@@ -2,17 +2,21 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import MemberForm from "@/components/forms/MemberForm";
+import PasskeyModal from "@/components/PasskeyModal";
 
-export default function Home() {
+export default function Home({ searchParams } : SearchParamsProps) {
   // Example Icons
   const iconExample = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdob3N0Ij48cGF0aCBkPSJNOSAxMGguMDEiLz48cGF0aCBkPSJNMTUgMTBoLjAxIi8+PHBhdGggZD0iTTEyIDJhOCA4IDAgMCAwLTggOHYxMmwzLTMgMi41IDIuNUwxMiAxOWwyLjUgMi41TDE3IDE5bDMgM1YxMGE4IDggMCAwIDAtOC04eiIvPjwvc3ZnPg==`
   const iconOne = `https://img.icons8.com/ios/300/ghost--v1.png`
   //const icon = ``
+
+  const isAdmin = searchParams.admin === 'true';
   
   return (
     <div className="flex h-screen max-h-screen">
 
       {/* Add Verification */}
+      {isAdmin && <PasskeyModal /> }
 
       {/* Takes up half the screen */}
       <section className="remove-scrollbar container my-auto">
